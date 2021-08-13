@@ -4,9 +4,9 @@ import Twitt from "../../components/Twitt/Twitt";
 
 import Navbar from "../../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
-import { useHistory } from "react-router-dom";
 
 const Profile = () => {
   const [token] = useAuth();
@@ -17,6 +17,7 @@ const Profile = () => {
     if (!token) {
       history.push("/");
     }
+    setUserName(token);
   }, [token, history]);
 
   return (
