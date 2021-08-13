@@ -6,7 +6,7 @@ import twitts from "../../twitts/Twitts";
 import { useEffect, useState } from "react";
 
 const Navbar = ({ userName }) => {
-  const [setToken] = useAuth(true);
+  const [token, setToken] = useAuth();
   const [person, setPerson] = useState({});
 
   const clearProfil = () => {
@@ -19,6 +19,7 @@ const Navbar = ({ userName }) => {
       setPerson(twitts.find((twit) => twit.name === userName));
     }
   }, [person, userName]);
+
   return (
     <nav className="navbar">
       {person && userName && (
@@ -28,7 +29,7 @@ const Navbar = ({ userName }) => {
           alt={`${userName}`}
         />
       )}
-      {person && <h2 className="navbar__username">{person.name}</h2>}
+      {userName && <h2 className="navbar__username">{token}</h2>}
       <img className="navbar__logo" src={logo} alt="logo" />
       <ul className="navbar__ul">
         <li className="navbar__list">
