@@ -1,5 +1,5 @@
 import "./Navbar.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import logo from "../../img/logo.png";
 import useAuth from "../../hooks/useAuth";
 import twitts from "../../twitts/Twitts";
@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 const Navbar = ({ userName }) => {
   const [token, setToken] = useAuth();
   const [person, setPerson] = useState({});
+  const history = useHistory();
 
   const clearProfil = () => {
     window.localStorage.clear();
     setToken("");
+    history.push("/signup");
   };
 
   useEffect(() => {
